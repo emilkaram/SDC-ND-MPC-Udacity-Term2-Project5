@@ -23,8 +23,8 @@ The car follows that trajectory and gets new input to calculate a new set of tra
 
 
 ## Trajectory
-The trajectory parameters are the number of time steps N separated by time bydt.A large N is more costly to compute. Running the algorithm with values greater than 20 caused the car to go off-track. Same for dt, smaller time steps are more costly but larger values mean missing a lot of things happen between each calculation. 
-I got the best restults when I set N=10 and dt=0.1 also got a better resulsts with N=10 and dt=0.05 but the aloghrithm with slower.
+The trajectory parameters are the number of time steps N separated by time by dt.A large N is more costly to compute. Running the algorithm with values greater than 20 caused the car to go off-track.For dt smaller time steps will need more computational power but larger values mean missing variations between each calculation. 
+I got the best restults when I set N=10 and dt=0.1 also got a better resulsts with N=10 and dt=0.05 but the aloghrithm was slower.
 ![](https://github.com/emilkaram/SDC-ND-MPC-Udacity-Term2-Project5/blob/master/img/10.png)
 
 ## Vehicle Model
