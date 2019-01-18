@@ -103,9 +103,11 @@ The code compiled without errors:
 
 ![](https://github.com/emilkaram/SDC-ND-MPC-Udacity-Term2-Project5/blob/master/img/2.png)
 
-The car stayed on the driveable road all the time.
+# The car stayed on the driveable road all the time.
 
-[video link to MPC](https://github.com/emilkaram/SDC-ND-MPC-Udacity-Term2-Project5/tree/master/video/vid2.mp4)
+## [video link to MPC](https://github.com/emilkaram/SDC-ND-MPC-Udacity-Term2-Project5/tree/master/video/vid2.mp4)
+
+
 
 
 
