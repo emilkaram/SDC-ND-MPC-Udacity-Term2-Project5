@@ -21,9 +21,12 @@ The trajectory parameters are the number of time steps N separated in time bydt.
 
 ## Vehicle Model
 This is the set of equations describing the system behavior the updates across dt. In this case we used a simplified kinematic model defined by a state of six parameters:
+![](https://github.com/emilkaram/SDC-ND-MPC-Udacity-Term2-Project5/blob/master/img/12.png)
 
-Actuator constraints
+
+## Actuator constraints
 These are limiting parameters defined by the design of the vehicle and fundamental physics — e.g. a car never makes a hard 90° turn. This is called a nonholonomic model. In our case:
+1[](https://github.com/emilkaram/SDC-ND-MPC-Udacity-Term2-Project5/blob/master/img/13.PNG)
 
 ## Cost Function
 The cost function penalizes state — velocity, cross-track and orientation errors. We also include the control input so to penalize the magnitude of the input and its change rate. This will allow for some temporal smoothness (e.g during lane changes).
