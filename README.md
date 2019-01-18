@@ -40,6 +40,24 @@ const double actuator_cost_weight = 5;
 const double steer_rate_cost_weight = 200000;
 const double accel__rate_cost_weight = 10;
 
+to implement the cost fucntion I used IPOPT 
+   min     f(x)
+ x ∈ Rⁿ
+
+s.t.       g_L ≤ g(x) ≤ g_U
+           x_L ≤  x   ≤ x_U
+
+where f(x): Rⁿ --> R is the objective function in our case is the cost, and g(x): Rⁿ --> Rᵐ are the constraint functions. The vectors g_L and g_U denote the lower and upper bounds on the constraints, and the vectors x_L and x_U are the bounds on the variables x. The functions f(x) and g(x) can be nonlinear and nonconvex, but should be twice continuously differentiable. Note that equality constraints can be formulated in the above formulation by setting the corresponding components of g_L and g_U to the same value.
+
+Ipopt
+Ipopt is the tool we'll be using to optimize the control inputs  
+![](https://github.com/emilkaram/SDC-ND-MPC-Udacity-Term2-Project5/blob/master/img/14.PNG)
+
+. It's able to find locally optimal values (non-linear problem!) while keeping the constraints set directly to the actuators and the constraints defined by the vehicle model. Ipopt requires we give it the jacobians and hessians directly - it does not compute them for us. Hence, we need to either manually compute them or have a library do this for us. Luckily, there is a library called CppAD which does exactly this.
+
+CppAD
+CppAD is a library we'll use for automatic differentiation. By using CppAD we don't have to manually compute derivatives, which is tedious and prone to error.
+
 ## Polynomial Fitting and MPC Preprocessing
 The way points provided by the simulator are transformed to the car coordinate system.
 
@@ -90,15 +108,6 @@ In a real car, there will be latency in a command that propagates through the sy
 3. Compile: `cmake .. && make`
 4. Run it: `./mpc`.
 
-## Build with Docker-Compose
-The docker-compose can run the project into a container
-and exposes the port required by the simulator to run.
-
-1. Clone this repo.
-2. Build image: `docker-compose build`
-3. Run Container: `docker-compose up`
-4. On code changes repeat steps 2 and 3.
-
 ## Tips
 
 1. The MPC is recommended to be tested on examples to see if implementation behaves as desired. One possible example
@@ -108,61 +117,19 @@ is the vehicle offset of a straight line (reference). If the MPC implementation 
 4.  Tips for setting up your environment are available [here](https://classroom.udacity.com/nanodegrees/nd013/parts/40f38239-66b6-46ec-ae68-03afd8a601c8/modules/0949fca6-b379-42af-a919-ee50aa304e6a/lessons/f758c44c-5e40-4e01-93b5-1a82aa4e044f/concepts/23d376c7-0195-4276-bdf0-e02f1f3c665d)
 5. **VM Latency:** Some students have reported differences in behavior using VM's ostensibly a result of latency.  Please let us know if issues arise as a result of a VM environment.
 
-## Editor Settings
 
-We have kept editor configuration files out of this repo to
-keep it as simple and environment agnostic as possible. However, we recommend
-using the following settings:
 
-* indent using spaces
-* set tab width to 2 spaces (keeps the matrices in source code aligned)
 
-## Code Style
 
-Please (do your best to) stick to [Google's C++ style guide](https://google.github.io/styleguide/cppguide.html).
 
-## Project Instructions and Rubric
 
-Note: regardless of the changes you make, your project must be buildable using
-cmake and make!
 
-More information is only accessible by people who are already enrolled in Term 2
-of CarND. If you are enrolled, see [the project page](https://classroom.udacity.com/nanodegrees/nd013/parts/40f38239-66b6-46ec-ae68-03afd8a601c8/modules/f1820894-8322-4bb3-81aa-b26b3c6dcbaf/lessons/b1ff3be0-c904-438e-aad3-2b5379f0e0c3/concepts/1a2255a0-e23c-44cf-8d41-39b8a3c8264a)
-for instructions and the project rubric.
 
-## Hints!
 
-* You don't have to follow this directory structure, but if you do, your work
-  will span all of the .cpp files here. Keep an eye out for TODOs.
 
-## Call for IDE Profiles Pull Requests
 
-Help your fellow students!
 
-We decided to create Makefiles with cmake to keep this project as platform
-agnostic as possible. We omitted IDE profiles to ensure
-students don't feel pressured to use one IDE or another.
 
-However! I'd love to help people get up and running with their IDEs of choice.
-If you've created a profile for an IDE you think other students would
-appreciate, we'd love to have you add the requisite profile files and
-instructions to ide_profiles/. For example if you wanted to add a VS Code
-profile, you'd add:
 
-* /ide_profiles/vscode/.vscode
-* /ide_profiles/vscode/README.md
 
-The README should explain what the profile does, how to take advantage of it,
-and how to install it.
 
-Frankly, I've never been involved in a project with multiple IDE profiles
-before. I believe the best way to handle this would be to keep them out of the
-repo root to avoid clutter. Most profiles will include
-instructions to copy files to a new location to get picked up by the IDE, but
-that's just a guess.
-
-One last note here: regardless of the IDE used, every submitted project must
-still be compilable with cmake and make./
-
-## How to write a README
-A well written README file can enhance your project and portfolio and develop your abilities to create professional README files by completing [this free course](https://www.udacity.com/course/writing-readmes--ud777).
