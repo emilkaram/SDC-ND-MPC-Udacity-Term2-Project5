@@ -39,15 +39,18 @@ Vehicle model is the of equations describing the system behavior over time dt. H
 
 
 ## Actuator constraints
-These are limiting parameters defined by the design of the vehicle and fundamental physics — e.g. a car never makes a hard 90° turn. This is called a nonholonomic model. In our case:
+Actuator constraints are the limiting parameters defined by the design of the vehicle and physics. 
+In my model:
 ![](https://github.com/emilkaram/SDC-ND-MPC-Udacity-Term2-Project5/blob/master/img/13.PNG)
 
 ## Cost Function
-The cost function penalizes state — velocity, cross-track and orientation errors. We also include the control input so to penalize the magnitude of the input and its change rate. This will allow for some temporal smoothness (e.g during lane changes).
+The cost function penalizes state (velocity, cross-track and orientation errors). 
 
 ![](https://github.com/emilkaram/SDC-ND-MPC-Udacity-Term2-Project5/blob/master/img/8.png)
 
-To calculate the total cost we include a constant multiplier to each factor. We’re able then to refine the car behavior in the simulator.
+To calculate the total cost I include multipliers / weights to each factor in order to set imprance or priorty and smooth the car behavior.
+
+I set the follwing weights:
 
 cte weight = 1000
 epsi weight = 1000
@@ -57,7 +60,7 @@ Throttle actuator cost weight = 50
 steer rate cost weight = 300000
 accel rate cost weight = 5000
 
-to implement the cost fucntion I used IPOPT 
+To implement the cost fucntion I used IPOPT 
    min     f(x)
  x ∈ Rⁿ
 
@@ -85,22 +88,23 @@ The way points provided by the simulator are transformed to the car coordinate s
             waypoints_y.push_back(dx * sin(-psi) + dy * cos(-psi));
           }
 
-Then a 3rd-degree polynomial is fitted to the transformed waypoints.
+
+Then a 3rd-order polynomial is fitted to the transformed waypoints.
  //Polyfit
  auto coeffs = polyfit(waypoints_x_eig, waypoints_y_eig, 3);
  
   
- 
-
 ## Latency
-In a real car, there will be latency in a command that propagates through the system. In the simulator, it is 100 millisecond. We need to accommodate this time difference to predict waypoints for the trajectory.
-
-
+In a real world scenario, there will be latency in a command that propagates through the system. In the simulator, it is 100 millisecond. 
 
 ## Simulation
+
+The code comiled without errors:
+
 ![](https://github.com/emilkaram/SDC-ND-MPC-Udacity-Term2-Project5/blob/master/img/2.png)
 
 The car stayed on the driveable road all the time.
+
 [video link to MPC](https://github.com/emilkaram/SDC-ND-MPC-Udacity-Term2-Project5/tree/master/video/vid2.mp4)
 
 
