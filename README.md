@@ -1,7 +1,7 @@
 # CarND-Controls-MPC
 Self-Driving Car Engineer Nanodegree Program
 
-![](https://https://github.com/emilkaram/SDC-ND-MPC-Udacity-Term2-Project5/blob/master/img/5.png)
+![](https://github.com/emilkaram/SDC-ND-MPC-Udacity-Term2-Project5/blob/master/img/5.png)
 ---
 
 ## Dependencies
