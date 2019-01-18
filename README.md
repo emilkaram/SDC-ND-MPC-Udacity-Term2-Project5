@@ -33,12 +33,13 @@ The cost function penalizes state — velocity, cross-track and orientation 
 
 To calculate the total cost we include a constant multiplier to each factor. We’re able then to refine the car behavior in the simulator.
 
-const double cte_weight = 5000;
-const double epsi_weight = 5000;
-const double v_weight = 10;
-const double actuator_cost_weight = 5;
-const double steer_rate_cost_weight = 200000;
-const double accel__rate_cost_weight = 10;
+cte weight = 1000
+epsi weight = 1000
+v weight = 1
+steering actuator cost weight = 50
+Throttle actuator cost weight = 50
+steer rate cost weight = 300000
+accel rate cost weight = 5000
 
 to implement the cost fucntion I used IPOPT 
    min     f(x)
