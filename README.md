@@ -1,4 +1,4 @@
-# CarND-Controls-MPC
+# CarND-MPC (Model Predictive Control)
 Self-Driving Car Engineer Nanodegree Program
 
 ![](https://github.com/emilkaram/SDC-ND-MPC-Udacity-Term2-Project5/blob/master/img/6.png)
