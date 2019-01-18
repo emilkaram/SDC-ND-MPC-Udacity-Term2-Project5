@@ -61,8 +61,20 @@ CppAD is a library we'll use for automatic differentiation. By using CppAD we do
 
 ## Polynomial Fitting and MPC Preprocessing
 The way points provided by the simulator are transformed to the car coordinate system.
+// transform waypoints coordinate grid to be from car coordinate grid
+          for (unsigned int i = 0; i < ptsx.size(); i++) {
+            double dx = ptsx[i] - px;
+            double dy = ptsy[i] - py;
+            waypoints_x.push_back(dx * cos(-psi) - dy * sin(-psi));
+            waypoints_y.push_back(dx * sin(-psi) + dy * cos(-psi));
+          }
 
 Then a 3rd-degree polynomial is fitted to the transformed waypoints.
+ //Polyfit
+ auto coeffs = polyfit(waypoints_x_eig, waypoints_y_eig, 3);
+ 
+  
+ 
 
 ## Latency
 In a real car, there will be latency in a command that propagates through the system. In the simulator, it is 100 millisecond. We need to accommodate this time difference to predict waypoints for the trajectory.
@@ -71,6 +83,8 @@ In a real car, there will be latency in a command that propagates through the sy
 
 ## Simulation
 
+The car stayed on the driveable road all the time.
+[video link to MPC](https://github.com/emilkaram/SDC-ND-MPC-Udacity-Term2-Project5/tree/master/video/vid2.mp4)
 
 
 
