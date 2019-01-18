@@ -5,9 +5,19 @@ Self-Driving Car Engineer Nanodegree Program
 ---
 
 ## Project Intorduction:
+# Model Predictive Control
+The MPC considers the task of following a trajectory as an optimization problem in which the solution is the path the car should take. The idea is to simulate different actuator inputs (steering, acceleration and braking) and predict a resulting trajectory by selecting the one with the minimum cost. 
+The car follows that trajectory and gets new input to calculate a new set of trajectories to optimize. The model utilizes the called “receding horizon controller” which performs a trajectory recalculation for every new state, since the defined trajectory is just an approximation.
+
+![](https://github.com/emilkaram/SDC-ND-MPC-Udacity-Term2-Project5/blob/master/img/10.png)
 
 
+
+Trajectory
+The trajectory parameters are the number of time steps N separated in time bydt. It’s not necessary to use a large number of steps since the algorithm recalculates the trajectory on every step. Besides, a large N is more costly to compute. Running the algorithm with values greater than 20 caused the car to go off-track. Same for dt, smaller time steps are more costly but larger values mean a lot of things happen between each calculation. Larger values, of for example, 0.1 caused the car run off-track.
 ![](https://github.com/emilkaram/SDC-ND-MPC-Udacity-Term2-Project5/blob/master/img/1.png)
+
+
 
 ## Dependencies
 
