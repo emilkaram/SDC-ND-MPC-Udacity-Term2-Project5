@@ -4,9 +4,11 @@ Self-Driving Car Engineer Nanodegree Program
 ![](https://github.com/emilkaram/SDC-ND-MPC-Udacity-Term2-Project5/blob/master/img/5.png)
 
 ## Project Intorduction:
-MPC controller’s strategy for finding the optimal steering wheel angle to control the car’s longitudinal speed. At each time step, the MPC controller makes predictions about the future lateral positions of the car. To drive the predicted path of the car as close to the reference as possible, the MPC controller formulates the control problem as an optimization problem. It tries to minimize the errors between the lateral positions of the car and the reference as well as steering wheel angle increments. The cost function is represented as a weighted squared sum of these two terms. The solution to this optimization problem provides the optimal steering wheel angle sequence. At the current time step, MPC only applies the first step of this optimal sequence to the car and disregards the rest. In the next time step, it gets a new measurement of the car’s lateral position. The prediction horizon shifts by one time step, and the controller repeats the same cycle to calculate the next optimal steering wheel angle.
+MPC controller’s strategy for finding the optimal steering wheel angle to control the car’s longitudinal speed. At each time step, the MPC controller makes predictions about the future lateral positions of the car. To drive the predicted path of the car as close to the reference as possible, the MPC controller formulates the control problem as an optimization problem. It tries to minimize the errors between the lateral positions of the car and the reference as well as steering wheel angle increments. 
+
 ![](https://github.com/emilkaram/SDC-ND-MPC-Udacity-Term2-Project5/blob/master/img/6.png)
 
+The cost function is represented as a weighted squared sum of these two terms. The solution to this optimization problem provides the optimal steering wheel angle sequence. At the current time step, MPC only applies the first step of this optimal sequence to the car and disregards the rest. In the next time step, it gets a new measurement of the car’s lateral position. The prediction horizon shifts by one time step, and the controller repeats the same cycle to calculate the next optimal steering wheel angle. 
 ![](https://github.com/emilkaram/SDC-ND-MPC-Udacity-Term2-Project5/blob/master/img/3.png)
 
 ---
