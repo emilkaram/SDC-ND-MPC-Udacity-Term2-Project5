@@ -5,17 +5,45 @@ Self-Driving Car Engineer Nanodegree Program
 ---
 
 ## Project Intorduction:
-# Model Predictive Control
+
+
+## Model Predictive Control
 The MPC considers the task of following a trajectory as an optimization problem in which the solution is the path the car should take. The idea is to simulate different actuator inputs (steering, acceleration and braking) and predict a resulting trajectory by selecting the one with the minimum cost. 
 The car follows that trajectory and gets new input to calculate a new set of trajectories to optimize. The model utilizes the called “receding horizon controller” which performs a trajectory recalculation for every new state, since the defined trajectory is just an approximation.
 
+![](https://github.com/emilkaram/SDC-ND-MPC-Udacity-Term2-Project5/blob/master/img/1.png)
+
+
+
+## Trajectory
+The trajectory parameters are the number of time steps N separated in time bydt. It’s not necessary to use a large number of steps since the algorithm recalculates the trajectory on every step. Besides, a large N is more costly to compute. Running the algorithm with values greater than 20 caused the car to go off-track. Same for dt, smaller time steps are more costly but larger values mean a lot of things happen between each calculation. Larger values, of for example, 0.1 caused the car run off-track.
 ![](https://github.com/emilkaram/SDC-ND-MPC-Udacity-Term2-Project5/blob/master/img/10.png)
 
+## Vehicle Model
+This is the set of equations describing the system behavior the updates across dt. In this case we used a simplified kinematic model defined by a state of six parameters:
 
+Actuator constraints
+These are limiting parameters defined by the design of the vehicle and fundamental physics — e.g. a car never makes a hard 90° turn. This is called a nonholonomic model. In our case:
 
-Trajectory
-The trajectory parameters are the number of time steps N separated in time bydt. It’s not necessary to use a large number of steps since the algorithm recalculates the trajectory on every step. Besides, a large N is more costly to compute. Running the algorithm with values greater than 20 caused the car to go off-track. Same for dt, smaller time steps are more costly but larger values mean a lot of things happen between each calculation. Larger values, of for example, 0.1 caused the car run off-track.
-![](https://github.com/emilkaram/SDC-ND-MPC-Udacity-Term2-Project5/blob/master/img/1.png)
+## Cost Function
+The cost function penalizes state — velocity, cross-track and orientation errors. We also include the control input so to penalize the magnitude of the input and its change rate. This will allow for some temporal smoothness (e.g during lane changes).
+
+To calculate the total cost we include a constant multiplier to each factor. We’re able then to refine the car behavior in the simulator.
+
+const double cte_weight = 5000;
+const double epsi_weight = 5000;
+const double v_weight = 10;
+const double actuator_cost_weight = 5;
+const double steer_rate_cost_weight = 200000;
+const double accel__rate_cost_weight = 10;
+
+## Latency
+A latency of 100ms was artificially included before sending actuations to the simulator to mimic typical response times for real world cars. s
+
+The latency factor was then included in the state vector before sending it to the model calculation.
+
+## Simulation
+
 
 
 
