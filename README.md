@@ -157,7 +157,7 @@ is the vehicle offset of a straight line (reference). If the MPC implementation 
 
 
 
-## Conclsuion:
+## Conclusion:
 
 The model was successfully and the car stayed on the driveable road all the time.
 
