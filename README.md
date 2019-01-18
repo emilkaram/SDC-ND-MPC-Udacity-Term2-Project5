@@ -30,7 +30,10 @@ I got the best restults when I set N=10 and dt=0.1 also got a better resulsts wi
 ![](https://github.com/emilkaram/SDC-ND-MPC-Udacity-Term2-Project5/blob/master/img/10.png)
 
 ## Vehicle Model
-This is the set of equations describing the system behavior the updates across dt. In this case we used a simplified kinematic model defined by a state of six parameters:
+Vehicle model is the of equations describing the system behavior over time dt. Here I used simplified kinematic model defined by a state of six parameters:
+
+![](https://github.com/emilkaram/SDC-ND-MPC-Udacity-Term2-Project5/blob/master/img/11.png)
+
 ![](https://github.com/emilkaram/SDC-ND-MPC-Udacity-Term2-Project5/blob/master/img/12.png)
 
 
