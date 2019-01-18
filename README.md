@@ -37,10 +37,15 @@ const double actuator_cost_weight = 5;
 const double steer_rate_cost_weight = 200000;
 const double accel__rate_cost_weight = 10;
 
-## Latency
-A latency of 100ms was artificially included before sending actuations to the simulator to mimic typical response times for real world cars. s
+## Polynomial Fitting and MPC Preprocessing
+The way points provided by the simulator are transformed to the car coordinate system.
 
-The latency factor was then included in the state vector before sending it to the model calculation.
+Then a 3rd-degree polynomial is fitted to the transformed waypoints.
+
+## Latency
+In a real car, there will be latency in a command that propagates through the system. In the simulator, it is 100 millisecond. We need to accommodate this time difference to predict waypoints for the trajectory.
+
+
 
 ## Simulation
 
