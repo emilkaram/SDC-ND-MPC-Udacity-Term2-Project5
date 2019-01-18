@@ -1,10 +1,16 @@
 # CarND-Controls-MPC
 Self-Driving Car Engineer Nanodegree Program
 
-![](https://github.com/emilkaram/SDC-ND-MPC-Udacity-Term2-Project5/blob/master/img/5.png)
+![](https://github.com/emilkaram/SDC-ND-MPC-Udacity-Term2-Project5/blob/master/img/6.png)
+
+![](https://github.com/emilkaram/SDC-ND-MPC-Udacity-Term2-Project5/blob/master/img/3.png)
+
 ---
 
 ## Project Intorduction:
+
+![](https://github.com/emilkaram/SDC-ND-MPC-Udacity-Term2-Project5/blob/master/img/5.png)
+
 
 
 ## Model Predictive Control
@@ -30,6 +36,8 @@ These are limiting parameters defined by the design of the vehicle and fundament
 
 ## Cost Function
 The cost function penalizes state — velocity, cross-track and orientation errors. We also include the control input so to penalize the magnitude of the input and its change rate. This will allow for some temporal smoothness (e.g during lane changes).
+
+![](https://github.com/emilkaram/SDC-ND-MPC-Udacity-Term2-Project5/blob/master/img/8.png)
 
 To calculate the total cost we include a constant multiplier to each factor. We’re able then to refine the car behavior in the simulator.
 
@@ -82,6 +90,7 @@ In a real car, there will be latency in a command that propagates through the sy
 
 
 ## Simulation
+![](https://github.com/emilkaram/SDC-ND-MPC-Udacity-Term2-Project5/blob/master/img/2.png)
 
 The car stayed on the driveable road all the time.
 [video link to MPC](https://github.com/emilkaram/SDC-ND-MPC-Udacity-Term2-Project5/tree/master/video/vid2.mp4)
