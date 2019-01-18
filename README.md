@@ -99,7 +99,7 @@ In a real world scenario, there will be latency in a command that propagates thr
 
 ## Simulation
 
-The code comiled without errors:
+The code compiled without errors:
 
 ![](https://github.com/emilkaram/SDC-ND-MPC-Udacity-Term2-Project5/blob/master/img/2.png)
 
